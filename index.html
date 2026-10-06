@@ -7,57 +7,178 @@
   <style>
     :root {
       --bg: #ffffff;
+      --bg-soft: #f4f6fb;
       --fg: #1b2a6b;
+      --muted: #5a6488;
+      --line: #dde2ef;
+      --accent: #ff6b4a;
+      --wrap: 1120px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--fg);
       font-family: "Pretendard", "Malgun Gothic", sans-serif;
       line-height: 1.6;
-      padding: 64px 24px;
+      word-break: keep-all;
     }
-    main { max-width: 860px; margin: 0 auto; }
+    a { color: inherit; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; scroll-margin-top: 64px; }
+    .eyebrow { font-size: .85rem; font-weight: 700; letter-spacing: .08em; color: var(--accent); margin-bottom: 12px; }
+    h2 { font-size: 2rem; line-height: 1.3; margin-bottom: 40px; }
 
-    /* 타이틀 > 소제목 = 이름 > 근거 >= 부록 */
-    h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 24px; }
-    .sub { font-size: 1.5rem; font-weight: 600; }
-    .name { font-size: 1.5rem; font-weight: 600; margin-top: 8px; }
+    /* 0 헤더 */
+    .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; text-decoration: none; }
+    .nav ul { display: flex; gap: 28px; list-style: none; font-size: .95rem; }
+    .nav ul a { text-decoration: none; color: var(--muted); }
+    .nav ul a:hover { color: var(--fg); }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 999px; background: var(--fg); color: #fff; text-decoration: none; font-weight: 600; font-size: .95rem; }
+    .btn.accent { background: var(--accent); }
 
-    .evidence { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--fg); }
-    .evidence ul { list-style: none; }
-    .evidence li { font-size: 1.1rem; padding: 8px 0; }
-    .evidence sup { font-size: 0.75em; font-weight: 700; }
+    /* 1 히어로 */
+    .hero { padding: 120px 0 96px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; }
+    .hero .sub { font-size: 1.35rem; font-weight: 600; color: var(--muted); margin-bottom: 32px; }
+    .hero .meta { margin-top: 28px; font-size: .95rem; color: var(--muted); }
+    .visual { aspect-ratio: 4 / 3; border-radius: 24px; background: var(--fg); color: #fff; display: grid; place-items: center; font-size: 1.1rem; opacity: .9; }
 
-    .appendix { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--fg); }
-    .appendix h2 { font-size: 1.1rem; margin-bottom: 8px; }
-    .appendix ol { padding-left: 1.4em; font-size: 1rem; }
+    /* 2 지표 띠 */
+    .stats { background: var(--fg); color: #fff; padding: 56px 0; }
+    .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+    .stats b { display: block; font-size: 2.6rem; line-height: 1.2; }
+    .stats span { font-size: .95rem; opacity: .8; }
+
+    /* 3 근거 카드 */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; }
+    .card .num { width: 44px; height: 44px; border-radius: 12px; background: var(--bg-soft); display: grid; place-items: center; font-weight: 800; margin-bottom: 20px; }
+    .card p { font-size: 1.1rem; font-weight: 600; }
+    .card sup a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+    /* 4 체험 흐름 */
+    #flow { background: var(--bg-soft); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; list-style: none; counter-reset: s; }
+    .steps li { background: #fff; border-radius: 16px; padding: 24px; counter-increment: s; }
+    .steps li::before { content: "0" counter(s); display: block; font-weight: 800; color: var(--accent); margin-bottom: 8px; }
+    .steps strong { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+    .steps span { font-size: .95rem; color: var(--muted); }
+
+    /* 5 CTA */
+    .cta { text-align: center; }
+    .cta p { font-size: 1.6rem; font-weight: 700; margin-bottom: 28px; }
+
+    /* 6 푸터 */
+    footer { background: var(--bg-soft); padding: 56px 0; font-size: .9rem; color: var(--muted); }
+    footer h3 { font-size: 1rem; color: var(--fg); margin-bottom: 12px; }
+    footer ol { padding-left: 1.4em; margin-bottom: 28px; }
+    footer li { padding: 4px 0; }
+    footer li a { color: var(--fg); }
+
+    @media (max-width: 768px) {
+      section { padding: 48px 0; }
+      .nav ul { display: none; }
+      .hero { padding: 56px 0 48px; }
+      .hero .wrap, .cards, .steps, .stats .wrap { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .sub { font-size: 1.1rem; }
+      h2 { font-size: 1.5rem; margin-bottom: 24px; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>팝업 스토어 VR 체험 부스</h1>
-      <p class="sub">몰입감 있는 체험 콘텐츠가 브랜드 충성심과 MD 매출을 증진시킨다.</p>
-      <p class="name">홍길동</p>
-    </header>
-
-    <section class="evidence">
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="#top">VR POP-UP</a>
       <ul>
-        <li>VR의 몰입도와 뇌 활동은 평면 디스플레이를 압도한다.<sup>*부록 1</sup></li>
-        <li>팝업의 체험 요소가 정보 공유와 충동 구매에 영향을 끼친다.<sup>*부록 2</sup></li>
-        <li>팝업 콘텐츠의 차별성과 한정성이 브랜드의 이미지와 충성도를 향상시킨다.<sup>*부록 3</sup></li>
+        <li><a href="#evidence">근거</a></li>
+        <li><a href="#flow">체험 흐름</a></li>
+        <li><a href="#sources">출처</a></li>
       </ul>
+      <a class="btn" href="#cta">제안 보기</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">POP-UP STORE PROPOSAL</p>
+          <h1>팝업 스토어<br>VR 체험 부스</h1>
+          <p class="sub">몰입감 있는 체험 콘텐츠가 브랜드 충성심과 MD 매출을 증진시킨다.</p>
+          <a class="btn accent" href="#evidence">근거 보기</a>
+          <p class="meta">제안자 · 홍길동</p>
+        </div>
+        <div class="visual" role="img" aria-label="키 비주얼 자리">키 비주얼</div>
+      </div>
     </section>
 
-    <section class="appendix">
-      <h2>부록 (임시)</h2>
-      <ol>
-        <li>출처 1</li>
-        <li>출처 2</li>
-        <li>출처 3</li>
-      </ol>
+    <!-- 수치는 보강 단계에서 출처 확인 후 채움 -->
+    <div class="stats">
+      <div class="wrap">
+        <div><b>—</b><span>VR 몰입도</span></div>
+        <div><b>—</b><span>체험 후 충동 구매</span></div>
+        <div><b>—</b><span>브랜드 충성도</span></div>
+      </div>
+    </div>
+
+    <section id="evidence">
+      <div class="wrap">
+        <p class="eyebrow">WHY VR</p>
+        <h2>체험이 매출로 이어지는 세 가지 근거</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="num">1</div>
+            <p>VR의 몰입도와 뇌 활동은 평면 디스플레이를 압도한다.<sup><a href="#src-1">[1]</a></sup></p>
+          </article>
+          <article class="card">
+            <div class="num">2</div>
+            <p>팝업의 체험 요소가 정보 공유와 충동 구매에 영향을 끼친다.<sup><a href="#src-2">[2]</a></sup></p>
+          </article>
+          <article class="card">
+            <div class="num">3</div>
+            <p>팝업 콘텐츠의 차별성과 한정성이 브랜드의 이미지와 충성도를 향상시킨다.<sup><a href="#src-3">[3]</a><a href="#src-4">[4]</a></sup></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="wrap">
+        <p class="eyebrow">EXPERIENCE FLOW</p>
+        <h2>부스 안에서의 고객 동선</h2>
+        <ol class="steps">
+          <li><strong>입장</strong><span>대기 동선에서 티저 노출</span></li>
+          <li><strong>VR 체험</strong><span>브랜드 세계관 몰입</span></li>
+          <li><strong>공유</strong><span>인증샷·SNS 확산</span></li>
+          <li><strong>MD 구매</strong><span>체험 직후 한정 굿즈</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="cta" class="cta">
+      <div class="wrap">
+        <p>다음 팝업에 VR 체험 부스를 더하세요.</p>
+        <a class="btn accent" href="#top">처음으로</a>
+      </div>
     </section>
   </main>
+
+  <footer id="sources">
+    <div class="wrap">
+      <h3>출처</h3>
+      <ol>
+        <li id="src-1"><a href="https://www.mdpi.com/1660-4601/19/15/9457" target="_blank" rel="noopener">VR의 몰입감과 뇌 활동에 대한 근거</a> — MDPI, IJERPH 19(15)</li>
+        <li id="src-2"><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003299400" target="_blank" rel="noopener">팝업 스토어의 체험 요소가 정보 확산과 충동 구매율에 끼치는 영향</a> — KCI</li>
+        <li id="src-3"><a href="https://www.kci.go.kr/kciportal/mobile/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003302977" target="_blank" rel="noopener">캐릭터/IP 팝업에서 경험 요인이 사용자 만족과 브랜드 태도에 미치는 영향</a> — KCI</li>
+        <li id="src-4"><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003128494" target="_blank" rel="noopener">체험 마케팅 — 캐릭터 팝업스토어</a> — KCI</li>
+      </ol>
+      <p>© 홍길동 · 이 페이지는 AI의 도움을 받아 제작했습니다.</p>
+    </div>
+  </footer>
 </body>
 </html>
