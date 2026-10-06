@@ -3,9 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebProject</title>
+  <title>팝업 스토어 VR 체험 부스</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1b2a6b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Pretendard", "Malgun Gothic", sans-serif;
+      line-height: 1.6;
+      padding: 64px 24px;
+    }
+    main { max-width: 860px; margin: 0 auto; }
+
+    /* 타이틀 > 소제목 = 이름 > 근거 >= 부록 */
+    h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 24px; }
+    .sub { font-size: 1.5rem; font-weight: 600; }
+    .name { font-size: 1.5rem; font-weight: 600; margin-top: 8px; }
+
+    .evidence { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--fg); }
+    .evidence ul { list-style: none; }
+    .evidence li { font-size: 1.1rem; padding: 8px 0; }
+    .evidence sup { font-size: 0.75em; font-weight: 700; }
+
+    .appendix { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--fg); }
+    .appendix h2 { font-size: 1.1rem; margin-bottom: 8px; }
+    .appendix ol { padding-left: 1.4em; font-size: 1rem; }
+  </style>
 </head>
 <body>
-  <h1>Hello, WebProject!</h1>
+  <main>
+    <header>
+      <h1>팝업 스토어 VR 체험 부스</h1>
+      <p class="sub">몰입감 있는 체험 콘텐츠가 브랜드 충성심과 MD 매출을 증진시킨다.</p>
+      <p class="name">홍길동</p>
+    </header>
+
+    <section class="evidence">
+      <ul>
+        <li>VR의 몰입도와 뇌 활동은 평면 디스플레이를 압도한다.<sup>*부록 1</sup></li>
+        <li>팝업의 체험 요소가 정보 공유와 충동 구매에 영향을 끼친다.<sup>*부록 2</sup></li>
+        <li>팝업 콘텐츠의 차별성과 한정성이 브랜드의 이미지와 충성도를 향상시킨다.<sup>*부록 3</sup></li>
+      </ul>
+    </section>
+
+    <section class="appendix">
+      <h2>부록 (임시)</h2>
+      <ol>
+        <li>출처 1</li>
+        <li>출처 2</li>
+        <li>출처 3</li>
+      </ol>
+    </section>
+  </main>
 </body>
 </html>
