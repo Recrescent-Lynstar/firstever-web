@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>팝업 스토어 VR 체험 부스</title>
+  <title>캐릭터·IP 팝업 VR 체험 부스</title>
   <style>
     :root {
       --primary: #3efab5;  /* 대표색: 면·배경 전용 (흰 바탕 글자로는 대비 부족) */
@@ -41,12 +41,19 @@
     .btn.accent { background: var(--primary); color: var(--fg); }
 
     /* 1 히어로 */
-    .hero { padding: 120px 0 96px; }
-    .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+    .hero { position: relative; overflow: hidden; padding: 140px 0 120px; }
+    .hero .wrap { position: relative; }
+    .hero .wrap > div { max-width: 560px; }
+    /* 키 비주얼: 가장자리가 흰 배경으로 사라지는 배경 이미지 */
+    .hero-bg {
+      position: absolute; top: 0; right: 0; width: 62%; height: 100%;
+      background: url("assets/hero.svg") center / contain no-repeat;
+      -webkit-mask-image: radial-gradient(ellipse 60% 65% at 60% 50%, #000 45%, transparent 100%);
+              mask-image: radial-gradient(ellipse 60% 65% at 60% 50%, #000 45%, transparent 100%);
+    }
     .hero h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; }
     .hero .sub { font-size: 1.35rem; font-weight: 600; color: var(--muted); margin-bottom: 32px; }
     .hero .meta { margin-top: 28px; font-size: .95rem; color: var(--muted); }
-    .visual { aspect-ratio: 4 / 3; border-radius: 24px; background: var(--primary); color: var(--fg); display: grid; place-items: center; font-size: 1.1rem; }
 
     /* 2 지표 띠 */
     .stats { background: var(--fg); color: #fff; padding: 56px 0; }
@@ -83,8 +90,9 @@
     @media (max-width: 768px) {
       section { padding: 48px 0; }
       .nav ul { display: none; }
-      .hero { padding: 56px 0 48px; }
-      .hero .wrap, .cards, .steps, .stats .wrap { grid-template-columns: 1fr; }
+      .hero { padding: 300px 0 48px; }
+      .hero-bg { width: 100%; height: 320px; }
+      .cards, .steps, .stats .wrap { grid-template-columns: 1fr; }
       .hero h1 { font-size: 2.2rem; }
       .hero .sub { font-size: 1.1rem; }
       h2 { font-size: 1.5rem; margin-bottom: 24px; }
@@ -106,15 +114,15 @@
 
   <main id="top">
     <section class="hero">
+      <div class="hero-bg" role="img" aria-label="VR 헤드셋을 쓰고 즐거워하는 여성"></div>
       <div class="wrap">
         <div>
-          <p class="eyebrow">POP-UP STORE PROPOSAL</p>
-          <h1>팝업 스토어<br>VR 체험 부스</h1>
-          <p class="sub">몰입감 있는 체험 콘텐츠가 브랜드 충성심과 MD 매출을 증진시킨다.</p>
+          <p class="eyebrow">CHARACTER · IP POP-UP PROPOSAL</p>
+          <h1>캐릭터·IP 팝업<br>VR 체험 부스</h1>
+          <p class="sub">좋아하는 캐릭터의 세계에 직접 들어가는 몰입 체험이 팬심을 브랜드 충성도와 MD 매출로 잇는다.</p>
           <a class="btn accent" href="#evidence">근거 보기</a>
           <p class="meta">제안자 · 홍길동</p>
         </div>
-        <div class="visual" role="img" aria-label="키 비주얼 자리">키 비주얼</div>
       </div>
     </section>
 
@@ -163,7 +171,7 @@
 
     <section id="cta" class="cta">
       <div class="wrap">
-        <p>다음 팝업에 VR 체험 부스를 더하세요.</p>
+        <p>다음 캐릭터·IP 팝업에 VR 체험 부스를 더하세요.</p>
         <a class="btn accent" href="#top">처음으로</a>
       </div>
     </section>

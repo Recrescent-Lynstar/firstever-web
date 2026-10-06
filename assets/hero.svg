@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="VR 헤드셋을 쓰고 즐거워하는 여성 일러스트 (임시)">
+  <circle cx="300" cy="300" r="270" fill="#3efab5" opacity=".28"/>
+  <!-- 반짝임 -->
+  <path d="M110,102 L115,115 L128,120 L115,125 L110,138 L105,125 L92,120 L105,115 Z" fill="#3efab5"/>
+  <path d="M505,92 L511,108 L527,114 L511,120 L505,136 L499,120 L483,114 L499,108 Z" fill="#0e1f1a"/>
+  <path d="M530,312 L534,322 L544,326 L534,330 L530,340 L526,330 L516,326 L526,322 Z" fill="#077a52"/>
+  <!-- 캐릭터 -->
+  <g transform="translate(78,470)">
+    <circle cx="-22" cy="-30" r="12" fill="#3efab5"/><circle cx="22" cy="-30" r="12" fill="#3efab5"/>
+    <circle r="40" fill="#3efab5"/>
+    <circle cx="-13" cy="-5" r="5" fill="#0e1f1a"/><circle cx="13" cy="-5" r="5" fill="#0e1f1a"/>
+    <path d="M-8,10 Q0,18 8,10" stroke="#0e1f1a" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(525,480)">
+    <rect x="-34" y="-34" width="68" height="68" rx="22" fill="#0e1f1a"/>
+    <circle cx="-11" cy="-6" r="5" fill="#3efab5"/><circle cx="11" cy="-6" r="5" fill="#3efab5"/>
+    <path d="M-7,10 Q0,16 7,10" stroke="#3efab5" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- 머리카락(뒤) -->
+  <path d="M195,240 C190,140 250,110 300,110 C350,110 410,140 405,240 L420,420 L180,420 Z" fill="#2a1d1a"/>
+  <!-- 팔 -->
+  <path d="M215,440 L130,235" stroke="#077a52" stroke-width="44" stroke-linecap="round"/>
+  <path d="M385,440 L470,235" stroke="#077a52" stroke-width="44" stroke-linecap="round"/>
+  <circle cx="125" cy="215" r="26" fill="#f6d3bd"/>
+  <circle cx="475" cy="215" r="26" fill="#f6d3bd"/>
+  <!-- 몸 -->
+  <rect x="276" y="330" width="48" height="60" fill="#eec0a6"/>
+  <path d="M150,600 C160,455 220,400 300,400 C380,400 440,455 450,600 Z" fill="#077a52"/>
+  <path d="M262,402 Q300,440 338,402" fill="#eec0a6"/>
+  <!-- 얼굴 -->
+  <ellipse cx="300" cy="255" rx="86" ry="100" fill="#f6d3bd"/>
+  <path d="M206,215 C214,145 268,124 300,126 C340,126 388,148 396,215 C366,180 332,168 300,170 C262,170 228,186 206,215 Z" fill="#2a1d1a"/>
+  <circle cx="246" cy="298" r="14" fill="#ff9ab0" opacity=".6"/>
+  <circle cx="354" cy="298" r="14" fill="#ff9ab0" opacity=".6"/>
+  <path d="M262,306 Q300,356 338,306 Z" fill="#7a1f2b"/>
+  <ellipse cx="300" cy="328" rx="16" ry="8" fill="#ff8a8a"/>
+  <!-- HMD -->
+  <rect x="200" y="222" width="200" height="20" rx="8" fill="#0e1f1a"/>
+  <rect x="290" y="128" width="20" height="74" rx="8" fill="#0e1f1a"/>
+  <rect x="218" y="194" width="164" height="82" rx="28" fill="#0e1f1a"/>
+  <rect x="231" y="206" width="138" height="58" rx="20" fill="#1f4a3c"/>
+  <rect x="245" y="216" width="62" height="8" rx="4" fill="#3efab5" opacity=".85"/>
+  <rect x="245" y="230" width="28" height="6" rx="3" fill="#3efab5" opacity=".5"/>
+</svg>
